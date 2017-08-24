@@ -1,0 +1,9 @@
+{
+  "name": "partition",
+  "version": "0.0.0",
+  "description": "Efficiently lookup number line partition segments",
+  "main": "partition.js",
+  "repository": "https://github.com/gimlids/partition",
+  "author": "david.stolarsky@gmail.com",
+  "license": "MIT"
+}
