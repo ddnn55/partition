@@ -1,4 +1,4 @@
-module.exports = function Partition(boundaries, userData) {
+function Partition(boundaries, userData) {
     
     boundaries.sort(function(a, b) {
         if(a < b) {
@@ -32,6 +32,16 @@ module.exports = function Partition(boundaries, userData) {
     return instance;
 };
 
+Partition.fromSizedSegments = function(sizedSegments) {
+    var boundaries = [0];
+    sizedSegments.forEach(function(sizedSegment) {
+        boundaries.push(boundaries[boundaries.length-1] + sizedSegment.size);
+    });
+    return Partition(boundaries, sizedSegments);
+}
+
+module.exports = Partition;
+
 /******** test ********/
 if (require.main === module) {
 
@@ -39,7 +49,7 @@ if (require.main === module) {
 
     var assert = require('assert');
     
-    var p = module.exports([0,  4,  9,  11,  11.5,  30],
+    var p = Partition([0,  4,  9,  11,  11.5,  30],
                             ['a','b','c', 'd',   'e']);
     
     assert(p.at(0) === 'a');
