@@ -13,7 +13,14 @@ function Partition(boundaries, userData) {
     });
     
     var instance = {
+        span: function() {
+            return boundaries[boundaries.length - 1] - boundaries[0];
+        },
+        atProgress: function(progress) {
+            return instance.at(boundaries[0] + progress * instance.span());
+        },
         at: function(x) {
+
             var low = 0;
             var high = boundaries.length-1;
             while(high - low > 1) {
@@ -25,7 +32,10 @@ function Partition(boundaries, userData) {
                     high = middle;
                 }
             }
-            return userData[low];
+            return {
+                index: low,
+                value: userData[low]
+            };
         }
     };
 
