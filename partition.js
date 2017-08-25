@@ -19,6 +19,9 @@ function Partition(boundaries, userData) {
         atProgress: function(progress) {
             return instance.at(boundaries[0] + progress * instance.span());
         },
+        values: function() {
+            return userData;
+        },
         at: function(x) {
 
             var low = 0;
@@ -32,9 +35,12 @@ function Partition(boundaries, userData) {
                     high = middle;
                 }
             }
+            const segmentSize = boundaries[high] - boundaries[low];
+            const segmentProgress = (x - boundaries[low]) / segmentSize;
             return {
                 index: low,
-                value: userData[low]
+                value: userData[low],
+                segmentProgress
             };
         }
     };
