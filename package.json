@@ -1,6 +1,6 @@
 {
   "name": "partition",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Efficiently lookup number line partition segments",
   "main": "partition.js",
   "repository": "https://github.com/gimlids/partition",
