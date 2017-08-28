@@ -40,7 +40,7 @@ function Partition(boundaries, userData) {
             return {
                 index: low,
                 value: userData[low],
-                segmentProgress
+                segmentProgress: segmentProgress
             };
         }
     };
