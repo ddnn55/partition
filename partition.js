@@ -49,7 +49,11 @@ function Partition(boundaries, userData) {
 };
 
 Partition.fromSizedSegments = function(sizedSegments) {
-    var boundaries = [0];
+    return Partition.fromSizedSegmentsStartingAt(0, sizedSegments);
+}
+
+Partition.fromSizedSegmentsStartingAt = function(start, sizedSegments) {
+    var boundaries = [start];
     sizedSegments.forEach(function(sizedSegment) {
         boundaries.push(boundaries[boundaries.length-1] + sizedSegment.size);
     });
