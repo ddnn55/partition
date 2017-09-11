@@ -13,6 +13,12 @@ function Partition(boundaries, userData) {
     });
     
     var instance = {
+        bounds: function() {
+            return [
+                boundaries[0],
+                boundaries[boundaries.length - 1]
+            ];
+        },
         span: function() {
             return boundaries[boundaries.length - 1] - boundaries[0];
         },
